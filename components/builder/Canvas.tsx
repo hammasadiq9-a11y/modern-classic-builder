@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { ComponentType } from '../../../src/app/builder/page'
 
 type CanvasProps = {
@@ -70,7 +71,7 @@ export default function Canvas({ components, selectedId, onSelect, onDelete, onM
                     color: component.styles.color,
                     fontSize: component.styles.fontSize,
                     fontWeight: component.styles.fontWeight,
-                    textAlign: component.styles.textAlign as any,
+                    textAlign: component.styles.textAlign as 'left' | 'center' | 'right',
                     backgroundColor: component.styles.backgroundColor,
                     padding: component.styles.padding,
                     borderRadius: component.styles.borderRadius,
@@ -89,11 +90,14 @@ export default function Canvas({ components, selectedId, onSelect, onDelete, onM
                       </button>
                     )}
                     {component.type === 'image' && (
-                      <img
-                        src={component.content}
-                        alt="Component"
-                        className="w-full object-cover"
-                      />
+                      <div className="relative w-full h-64">
+                        <Image
+                          src={component.content}
+                          alt="Component"
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                     )}
                     {component.type === 'divider' && (
                       <hr className="border-border" />
