@@ -1,7 +1,23 @@
 'use client'
 
 import Image from 'next/image'
-import { ComponentType } from '../../../src/app/builder/page'
+
+type ComponentStyles = {
+  color: string
+  fontSize: string
+  fontWeight: string
+  textAlign: string
+  backgroundColor: string
+  padding: string
+  borderRadius: string
+}
+
+type ComponentType = {
+  id: string
+  type: string
+  content: string
+  styles: ComponentStyles
+}
 
 type CanvasProps = {
   components: ComponentType[]
